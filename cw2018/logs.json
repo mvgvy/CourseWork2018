@@ -1,0 +1,13 @@
+[
+  {
+    "login": "admin",
+    "password": "admin",
+	"status" : 1
+	
+  },
+  {
+    "login": "guest",
+    "password": "guest",
+	"status" : 0
+  }
+]

@@ -1,0 +1,15 @@
+{% extends 'wrapper.html'%}
+{% block content%}
+    <div class="container">
+        <div class="jumbotron secondary-color">
+         <h1 aligin="center">Логин</h1>
+         <hr>
+			       <form action="login" method="post" class="text-center p-5">
+                {% csrf_token %}
+				        <input type="text" class="form-control mb-4" name="username" placeholder="Логин">
+				        <input type="password" class="form-control mb-4" name="password" placeholder="Пароль">
+				        <button type="submit" class="btn btn-success" type="button">Вход</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

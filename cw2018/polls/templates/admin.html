@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Admin</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+
+</head>
+<body>
+	<div id="de">
+        <div class="container2">
+            <a href="edit.html" class="knopka">Изменить</a>
+        </div>
+		<div id="spa">
+			{% for i in a %}
+				<br> <a href="organisation.html">{{ i.OrganisationName }}</a>
+				<br> {{ i.data }}
+				<br> {{ i.place }}
+                <p>Head:
+                    <br>{{ i.head.name }}
+                    <br>{{ i.head.DateOfBirth }}
+                </p>
+				<br><br><br>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

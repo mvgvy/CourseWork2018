@@ -1,0 +1,15 @@
+body {
+    background-color: #545b62;
+    color: white;
+}
+
+.left-info {
+    width: 50%
+}
+.right-ifo{
+    width: 50%
+}
+.right-content{
+    padding-left: 10%;
+    width: 100%
+}

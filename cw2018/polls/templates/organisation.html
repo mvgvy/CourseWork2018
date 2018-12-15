@@ -1,0 +1,43 @@
+{% extends 'wrapper.html'%}
+{% block content%}
+    <div class="container">
+        <div class="jumbotron stylish-color-dark">
+            <form action="order" method="post">
+                {% csrf_token %}
+                <label>По какой организации взять задачу</label>
+                <input type="text" class="form-control mb-4" name="OrganisationName" placeholder="">
+                <label>Введите описание задачи</label>
+                <input type="text" class="form-control mb-4" name="order" placeholder="">
+                <input type="submit" class="btn btn-success">
+            </form>
+
+            <hr>
+            <h1> Организация: {{ a.OrganisationName }} Дата: {{ a.data }}</h1>
+            <h1> Директор: {{ a.head.name }} Дата рождения: {{ a.head.DateOfBirth }}</h1>
+            <h1> Заказы: </h1>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Автор</th>
+                        <th>Описание</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in a.orders %}
+                    <tr>
+                        <td>{{ i.autor }}</td>
+                        <td>{{ i.description }}</td>
+                        <td>{{ i.departuredate }}</td>
+                        <td>{{ i.enddate }}</td>
+                        <td>{{ i.status }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock%}

@@ -1,0 +1,75 @@
+{% extends 'wrapper.html'%}
+{% block content%}
+    <div class="container">
+        <div class="jumbotron stylish-color-dark">
+            <h1 align="center">Добавление организации</h1>
+            <hr>
+        <div class="row">
+            <div class="left-info">
+                <form action="addnew" method="post">
+                    {% csrf_token %}
+                    <label for="OrganisationName">Название организации:</label>
+                    <input class="form-control mb-3" id="OrganisationName" type="text" name="OrganisationName">
+                    <label for="data">Дата основания:</label>
+                    <input class="form-control mb-3" id="data" type="text" name="data">
+                    <label for="name">Имя директора:</label>
+                    <input class="form-control mb-3" id="name" type="text" name="name">
+                    <label for="DateOfBirth">Дата рождения:</label>
+                    <input class="form-control mb-3" id="DateOfBirth" type="text" name="DateOfBirth">
+                    <input type="submit" class="btn btn-success">
+                </form>
+            </div>
+            <div class="right-info">
+                <div class="right-content">
+                    <form action="organisation" method="post">{% csrf_token %}
+                        <label for="name">По какой организации выдать детальный отчет?</label>
+                        <input class="form-control mb-3" type="text" name="name">
+                        <input type="submit" class="btn btn-success">
+                    </form>
+                    </div>
+                </div>
+        </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя организации</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Имя директора</th>
+                        <th scope="col">Дата рождения директора</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in a %}
+                    <tr>
+                        <th scope="col">{{ i.OrganisationName }}</th>
+                        <th scope="col">{{ i.data }}</th>
+                        <th scope="col">{{ i.head.name }}</th>
+                        <th scope="col">{{ i.head.DateOfBirth }}</th>
+                    </tr>
+            {% endfor %}
+            </tbody>
+
+            </table>
+        <div>
+            <hr>
+            <h1 align="center">Добавить задачу</h1>
+            <form action="edit" method="post">
+                {% csrf_token %}
+                <label>Имя организации</label>
+                <input id="OrganisationName" class="form-control mb-4" type="text" name="OrganisationName" placeholder = "OrganisationName">
+                <label>Автор</label>
+                <input id="autor" type="text" class="form-control mb-4" name="autor" placeholder = "autor">
+                <label>Описание</label>
+                <input id="description" type="text" class="form-control mb-4" name="description" placeholder = "description">
+                <label>Дата начала</label>
+                <input id="departuredate" type="text" class="form-control mb-4" name="departuredate " placeholder = "departuredate ">
+                <label>Дата окончания</label>
+                <input id="enddate" type="text" class="form-control mb-4" name="enddate " placeholder = "enddate">
+                <label>Стаутс</label>
+                <input id="status" type="text" class="form-control mb-4" name="status" placeholder = "status">
+                <input type="submit" class="btn btn-success">
+            </form>
+        </div>
+        </div>
+    </div>
+{% endblock %}
