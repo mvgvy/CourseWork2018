@@ -1,6 +1,6 @@
 body {
-    background-color: #545b62;
-    color: white;
+    background-color: #212121;
+    color: black;
 }
 
 .left-info {
@@ -12,4 +12,16 @@ body {
 .right-content{
     padding-left: 10%;
     width: 100%
+}
+
+.flat-form {
+  background: darkgray;
+  margin: 25px auto;
+  width: 390px;
+  height: 340px;
+  position: relative;
+}
+
+.fixitlater{
+    margin-top: -0.7%;
 }

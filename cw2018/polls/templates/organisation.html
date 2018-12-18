@@ -1,43 +1,51 @@
 {% extends 'wrapper.html'%}
 {% block content%}
     <div class="container">
-        <div class="jumbotron stylish-color-dark">
+        <div class="jumbotron stylish-color-dark text-white">
+            <h3> Организация: <a class="text-monospace">{{ a.OrganisationName }} </a></h3>
+            <h3>  Дата: <a class="text-monospace"> {{ a.data }} </a></h3>
+            <h3> Директор: <a class="text-monospace"> {{ a.head.name }} </a></h3>
+            <h3> Дата рождения: <a class="text-monospace"> {{ a.head.DateOfBirth }} </a></h3>
+            <br>
+            <br>
+            <h3 class="text-center"> Заказы: </h3>
+            <hr>
+            <div class="m-5">
+                 <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Автор</th>
+                            <th>Описание</th>
+                            <th>Дата начала</th>
+                            <th>Дата окончания</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in a.orders %}
+                        <tr>
+                            <td>{{ i.autor }}</td>
+                            <td>{{ i.description }}</td>
+                            <td>{{ i.departuredate }}</td>
+                            <td>{{ i.enddate }}</td>
+                            <td>{{ i.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <hr>
             <form action="order" method="post">
                 {% csrf_token %}
-                <label>По какой организации взять задачу</label>
+                <label>Выбор задачи</label>
                 <input type="text" class="form-control mb-4" name="OrganisationName" placeholder="">
-                <label>Введите описание задачи</label>
+                <label>Описание задачи</label>
                 <input type="text" class="form-control mb-4" name="order" placeholder="">
-                <input type="submit" class="btn btn-success">
-            </form>
+                <div class="text-center">
+                    <input type="submit" class="btn orange darken-4">
+                </div>
 
-            <hr>
-            <h1> Организация: {{ a.OrganisationName }} Дата: {{ a.data }}</h1>
-            <h1> Директор: {{ a.head.name }} Дата рождения: {{ a.head.DateOfBirth }}</h1>
-            <h1> Заказы: </h1>
-            <hr>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Автор</th>
-                        <th>Описание</th>
-                        <th>Дата начала</th>
-                        <th>Дата окончания</th>
-                        <th>Статус</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for i in a.orders %}
-                    <tr>
-                        <td>{{ i.autor }}</td>
-                        <td>{{ i.description }}</td>
-                        <td>{{ i.departuredate }}</td>
-                        <td>{{ i.enddate }}</td>
-                        <td>{{ i.status }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            </form>
         </div>
     </div>
 {% endblock%}

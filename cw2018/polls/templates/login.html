@@ -1,34 +1,48 @@
 {% extends 'wrapper.html'%}
 {% block content%}
     <div class="container">
-        <div class="jumbotron stylish-color-dark">
+        <div class="jumbotron stylish-color-dark text-white">
             <h1 align="center">Добавление организации</h1>
             <hr>
-        <div class="row">
-            <div class="left-info">
+            <div class="m-5 p-5">
                 <form action="addnew" method="post">
                     {% csrf_token %}
-                    <label for="OrganisationName">Название организации:</label>
-                    <input class="form-control mb-3" id="OrganisationName" type="text" name="OrganisationName">
-                    <label for="data">Дата основания:</label>
-                    <input class="form-control mb-3" id="data" type="text" name="data">
-                    <label for="name">Имя директора:</label>
-                    <input class="form-control mb-3" id="name" type="text" name="name">
-                    <label for="DateOfBirth">Дата рождения:</label>
-                    <input class="form-control mb-3" id="DateOfBirth" type="text" name="DateOfBirth">
-                    <input type="submit" class="btn btn-success">
+                    <div class="form-group">
+                        <label for="OrganisationName">Название организации:</label>
+                        <input class="form-control mb-3" id="OrganisationName" type="text" name="OrganisationName">
+                    </div>
+                    <div class="form-group">
+                        <label for="data">Дата основания:</label>
+                        <input class="form-control mb-3" id="data" type="text" name="data">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Имя директора:</label>
+                        <input class="form-control mb-3" id="name" type="text" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="DateOfBirth">Дата рождения:</label>
+                        <input class="form-control mb-3" id="DateOfBirth" type="text" name="DateOfBirth">
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="btn orange darken-4 ">
+                    </div>
                 </form>
             </div>
-            <div class="right-info">
-                <div class="right-content">
-                    <form action="organisation" method="post">{% csrf_token %}
-                        <label for="name">По какой организации выдать детальный отчет?</label>
-                        <input class="form-control mb-3" type="text" name="name">
-                        <input type="submit" class="btn btn-success">
-                    </form>
+            <hr>
+            <div class="m-5">
+                <form action="organisation" method="post">
+                    {% csrf_token %}
+                    <h2 class="text-center">Проверить организацию</h2>
+                    <br>
+                    <div class="form-row">
+                        <label for="name" class="col-3 p-2">Наименование организации:</label>
+                        <input class="form-control col-5" type="text" name="name">
+                        <input type="submit" class="btn orange darken-4 col-3 fixitlater" value="Получить отчёт">
                     </div>
-                </div>
-        </div>
+                </form>
+            </div>
+            <hr>
+            <h2 class="text-center">Список организации</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -52,23 +66,28 @@
             </table>
         <div>
             <hr>
-            <h1 align="center">Добавить задачу</h1>
-            <form action="edit" method="post">
-                {% csrf_token %}
-                <label>Имя организации</label>
-                <input id="OrganisationName" class="form-control mb-4" type="text" name="OrganisationName" placeholder = "OrganisationName">
-                <label>Автор</label>
-                <input id="autor" type="text" class="form-control mb-4" name="autor" placeholder = "autor">
-                <label>Описание</label>
-                <input id="description" type="text" class="form-control mb-4" name="description" placeholder = "description">
-                <label>Дата начала</label>
-                <input id="departuredate" type="text" class="form-control mb-4" name="departuredate " placeholder = "departuredate ">
-                <label>Дата окончания</label>
-                <input id="enddate" type="text" class="form-control mb-4" name="enddate " placeholder = "enddate">
-                <label>Стаутс</label>
-                <input id="status" type="text" class="form-control mb-4" name="status" placeholder = "status">
-                <input type="submit" class="btn btn-success">
-            </form>
+            <h2 align="center">Добавить задачу</h2>
+            <div class="m-5 p-5">
+                <form action="edit" method="post">
+                    {% csrf_token %}
+                    <label>Имя организации</label>
+                    <input id="OrganisationName" class="form-control mb-4" type="text" name="OrganisationName">
+                    <label>Автор</label>
+                    <input id="autor" type="text" class="form-control mb-4" name="autor">
+                    <label>Описание</label>
+                    <input id="description" type="text" class="form-control mb-4" name="description">
+                    <label>Дата начала</label>
+                    <input id="departuredate" type="text" class="form-control mb-4" name="departuredate ">
+                    <label>Дата окончания</label>
+                    <input id="enddate" type="text" class="form-control mb-4" name="enddate ">
+                    <label>Стаутс</label>
+                    <input id="status" type="text" class="form-control mb-4" name="status">
+                    <div class="text-center">
+                        <input type="submit" class="btn orange darken-4">
+                    </div>
+                </form>
+            </div>
+
         </div>
         </div>
     </div>
