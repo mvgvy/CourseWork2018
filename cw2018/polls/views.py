@@ -20,11 +20,19 @@ def login(request):
     if request.POST:
         for i in data:
             if i['login'] == request.POST.get('username') and i['password'] == request.POST.get('password'):
-                database = open('database.json')
-                db = database.read()
-                database.close()
-                db_json = json.loads(db)
-                return render(request, "login.html", {'a': db_json})
+                if i['status']:
+                    database = open('database.json')
+                    db = database.read()
+                    database.close()
+                    db_json = json.loads(db)
+                    return render(request, "login.html", {'a': db_json})
+                else:
+                    database = open('database.json')
+                    db = database.read()
+                    database.close()
+                    db_json = json.loads(db)
+                    return render(request, "login1.html", {'a': db_json})
+
     return render(request, 'error.html')
 
 

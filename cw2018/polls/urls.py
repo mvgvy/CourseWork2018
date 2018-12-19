@@ -11,4 +11,5 @@ urlpatterns = [
     path('error.html', views.error, name='error'),
     path('organisation', views.organisation, name='organisation'),
     path('order', views.order, name='order'),
+    path('edit', views.edit, name='edit'),
 ]

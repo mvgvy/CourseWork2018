@@ -1,0 +1,49 @@
+{% extends 'wrapper.html'%}
+{% block content%}
+    <div class="container">
+        <div class="jumbotron stylish-color-dark text-white">
+            <h1 align="center">Добавление организации</h1>
+            <hr>
+            <hr>
+            <div class="m-5">
+                <form action="organisation" method="post">
+                    {% csrf_token %}
+                    <h2 class="text-center">Проверить организацию</h2>
+                    <br>
+                    <div class="form-row">
+                        <label for="name" class="col-3 p-2">Наименование организации:</label>
+                        <input class="form-control col-5" type="text" name="name">
+                        <input type="submit" class="btn orange darken-4 col-3 fixitlater" value="Получить отчёт">
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <h2 class="text-center">Список организации</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя организации</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Имя директора</th>
+                        <th scope="col">Дата рождения директора</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in a %}
+                    <tr>
+                        <th scope="col">{{ i.OrganisationName }}</th>
+                        <th scope="col">{{ i.data }}</th>
+                        <th scope="col">{{ i.head.name }}</th>
+                        <th scope="col">{{ i.head.DateOfBirth }}</th>
+                    </tr>
+            {% endfor %}
+            </tbody>
+
+            </table>
+        <div>
+            <hr>
+
+        </div>
+        </div>
+    </div>
+{% endblock %}
